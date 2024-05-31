@@ -2,7 +2,7 @@
   "name": "semantic-versioning-example",
   "version": "1.0.0",
   "author": "Vikash Chauhan",
-  "repository": "https://github.com/VikashChauhan51/ecart-core.git",
+  "repository": "https://github.com/VikashChauhan51/catalog.git",
   "devDependencies": {
     "@semantic-release/commit-analyzer": "*",
     "@semantic-release/release-notes-generator": "*",
