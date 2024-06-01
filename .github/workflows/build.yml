@@ -8,8 +8,8 @@ on:
 
 env:
   DOTNET_VERSION: '8.0.x' # The .NET SDK version to use
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+  GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+  GITHUB_USERNAME: ${{ secrets.USER_NAME }}
 
 jobs:
   build-and-test:
