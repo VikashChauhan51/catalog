@@ -5,6 +5,10 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
+env:
+  PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+  USER_NAME: ${{ secrets.USER_NAME }}
 jobs:
   build:
     name: Build and analyze
