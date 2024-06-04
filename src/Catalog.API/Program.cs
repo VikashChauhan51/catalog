@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Ecart.Core.Behaviors;
 using Ecart.Core.Handlers;
 
@@ -20,6 +21,16 @@ builder.Services.AddMediatR(config =>
 builder.Services.AddValidatorsFromAssembly(assembly);
 builder.Services.AddCarter();
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+    options.DefaultApiVersion = new ApiVersion(1.0);
+    options.ApiVersionReader = new UrlSegmentApiVersionReader();
+}).AddApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+    options.SubstituteApiVersionInUrl = true;
+});
 
 var app = builder.Build();
 
@@ -33,7 +44,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseExceptionHandler(options => { });
+
 // Configure the HTTP request pipeline.
-app.MapCarter();
+app.NewVersionedApi()
+    .MapGroup("api/v{apiVersion:apiVersion}/")
+    .HasApiVersion(1)
+    .MapCarter();
 
 app.Run();
