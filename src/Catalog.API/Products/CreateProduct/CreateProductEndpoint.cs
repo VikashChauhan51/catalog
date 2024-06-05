@@ -10,7 +10,7 @@ public class CreateProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/products",
+        app.MapPost("/product",
             async (CreateProductRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateProductCommand>();
@@ -19,7 +19,7 @@ public class CreateProductEndpoint : ICarterModule
 
                 var response =  result.Adapt<CreateProductResponse>();
 
-                return Results.Created($"/products/{response.Id}", response);
+                return Results.Created($"/{response.Id}/product", response);
 
             })
         .WithName("CreateProduct")
