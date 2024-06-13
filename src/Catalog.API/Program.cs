@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using Ecart.Core.Behaviors;
 using Ecart.Core.Handlers;
+using Marten;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +19,17 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 
 });
+
+builder.Services.AddDaprClient();
+builder.Services.AddMarten(opts =>
+{
+    opts.Connection(builder.Configuration.GetConnectionString("Database")!);
+}).UseLightweightSessions();
+
+
 builder.Services.AddValidatorsFromAssembly(assembly);
 builder.Services.AddCarter();
-builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddApiVersioning(options =>
 {
     options.ReportApiVersions = true;
@@ -31,6 +40,11 @@ builder.Services.AddApiVersioning(options =>
     options.GroupNameFormat = "'v'VVV";
     options.SubstituteApiVersionInUrl = true;
 });
+
+
+builder.Services
+   .AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("Database")!);
 
 var app = builder.Build();
 
@@ -50,5 +64,7 @@ app.NewVersionedApi()
     .MapGroup("api/v{apiVersion:apiVersion}/")
     .HasApiVersion(1)
     .MapCarter();
+
+app.UseHealthChecks("/healthz");
 
 app.Run();
