@@ -1,16 +1,23 @@
 using Asp.Versioning;
+using Catalog.API;
+using Catalog.API.Helpers;
+using Dapr.Client;
+using Ecart.Core;
 using Ecart.Core.Behaviors;
+using Ecart.Core.Configurations;
 using Ecart.Core.Handlers;
 using Marten;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDaprConfiguration(builder.Configuration);
+builder.Services.AddSqlConfiguration(builder.Configuration);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add services to the container.
 var assembly = typeof(Program).Assembly;
 builder.Services.AddMediatR(config =>
 {
@@ -21,9 +28,29 @@ builder.Services.AddMediatR(config =>
 });
 
 builder.Services.AddDaprClient();
+builder.Services.AddDaprServices(builder.Configuration);
+
+
+#pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+var daprConfig = builder.Services.BuildServiceProvider().GetRequiredService<IOptions<DaprConfig>>().Value;
+var sqlConfig = builder.Services.BuildServiceProvider().GetRequiredService<IOptions<SqlConfig>>().Value;
+var daprClient = builder.Services.BuildServiceProvider().GetRequiredService<DaprClient>();
+#pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+
+await daprClient.WaitForSidecarAsync();
+var secretKeys = await daprClient.GetSecretAsync(daprConfig.SecretstoreName, Constants.DatabaseCredentialsKey);
+var credentials = secretKeys[Constants.DatabaseCredentialsKey];
+
+var connectionString = new ConnectionStringBuilder()
+    .WithServer(sqlConfig.ServerName)
+    .WithPort(sqlConfig.ServerPort)
+    .WithDatabase(sqlConfig.DatabaseName)
+    .WithCredentials(credentials)
+    .Build();
+
 builder.Services.AddMarten(opts =>
 {
-    opts.Connection(builder.Configuration.GetConnectionString("Database")!);
+    opts.Connection(connectionString);
 }).UseLightweightSessions();
 
 
@@ -42,9 +69,10 @@ builder.Services.AddApiVersioning(options =>
 });
 
 
+
 builder.Services
    .AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetConnectionString("Database")!);
+    .AddNpgSql(connectionString);
 
 var app = builder.Build();
 
