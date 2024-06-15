@@ -14,6 +14,7 @@
       "prerelease": true
     }
   ],
+  "repositoryUrl": "https://github.com/VikashChauhan51/catalog.git",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -125,6 +126,8 @@
       "semantic-release-docker",
       {
         "baseImageName": "ghcr.io/${{ github.repository_owner }}/catalog",
+        "dockerFile": "./src/Catalog.API/Dockerfile",
+        "context": "./src/Catalog.API",
         "registries": [
           {
             "url": "ghcr.io",
