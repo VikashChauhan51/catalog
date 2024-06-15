@@ -120,20 +120,6 @@
       {
         "successCmd": "echo \"RELEASE_VERSION=${nextRelease.version}\" >> $GITHUB_ENV"
       }
-    ],
-    [
-      "semantic-release-docker",
-      {
-        "baseImageName": "ghcr.io/${{ github.repository_owner }}/catalog",
-        "dockerFile": "./src/Catalog.API/Dockerfile",
-        "context": "./src/Catalog.API",
-        "registries": [
-          {
-            "url": "ghcr.io",
-            "imageName": "ghcr.io/${{ github.repository_owner }}/catalog"
-          }
-        ]
-      }
     ]
   ]
 }

@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image to GHCR
+name: build and publish docker image to GHCR
 
 on:
   push:
@@ -12,6 +12,10 @@ env:
   NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
   USER_NAME: ${{ secrets.USER_NAME }}
+  DOCKER_USERNAME: ${{ github.actor }}
+  DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_REGISTRY_USER: ${{ github.actor }}
+  DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   NODE_VERSION: 21
   DOTNET_VERSION: '8.0.x'
 
@@ -60,3 +64,15 @@ jobs:
           USER_NAME: ${{ secrets.USER_NAME }}
         run: npx semantic-release
         working-directory: ./
+
+      - name: Extract version from semantic-release output
+        id: get_version
+        run: echo "VERSION=$(cat .releaserc.json | jq -r '.nextRelease.version')" >> $GITHUB_ENV
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./src/Catalog.API
+          file: ./src/Catalog.API/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/catalog:${{ env.VERSION }}
