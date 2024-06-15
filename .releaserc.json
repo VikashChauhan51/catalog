@@ -93,16 +93,16 @@
         ":changelogFile: ": ":CHANGELOG.md:"
       }
     ],
-    "@semantic-release/docker",
+    "semantic-release-docker",
     [
       "@semantic-release/git",
       {
-        ":assets: ": [
-          ":package.json:",
-          ":CHANGELOG.md:",
-          ":src/Catalog.API/Catalog.API.csproj:"
+        "assets": [
+          "package.json",
+          "CHANGELOG.md",
+          "src/Catalog.API/Catalog.API.csproj"
         ],
-        ":message: ": ":chore(release):${nextRelease.version} [skip ci]\n\n ${nextRelease.notes}:"
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
     [
