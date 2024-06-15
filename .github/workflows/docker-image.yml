@@ -7,9 +7,10 @@ on:
     tags:
       - "v*.*.*"
 env:
-  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NODE_VERSION: 21
-  DOTNET_VERSION: "8.0.x"
+  DOTNET_VERSION: '8.0.x'
 
 jobs:
   build-and-publish:
@@ -35,7 +36,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
-        run: npm install
+        run: npm install -f
         working-directory: ./
       - name: Print GITHUB_SHA
         run: echo $GITHUB_SHA
