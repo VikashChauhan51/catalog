@@ -130,9 +130,7 @@
         "registries": [
           {
             "url": "ghcr.io",
-            "imageName": "ghcr.io/${{ github.repository_owner }}/catalog",
-            "username": "${DOCKER_USERNAME}",
-            "password": "${DOCKER_PASSWORD}"
+            "imageName": "ghcr.io/${{ github.repository_owner }}/catalog"
           }
         ]
       }
