@@ -14,8 +14,6 @@ env:
   USER_NAME: ${{ secrets.USER_NAME }}
   NODE_VERSION: 21
   DOTNET_VERSION: '8.0.x'
-  DOCKER_USERNAME: ${{ secrets.GITHUB_ACTOR }}
-  DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build-and-publish:
@@ -44,7 +42,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_USERNAME: ${{ secrets.GITHUB_ACTOR }}
+          DOCKER_USERNAME: ${{ github.actor }}
           DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          USER_NAME: ${{ secrets.USER_NAME }}
         run: npx semantic-release
         working-directory: ./
