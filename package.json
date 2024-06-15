@@ -1,5 +1,5 @@
 {
-  "name": "semantic-versioning-example",
+  "name": "catalog-service",
   "version": "1.0.0",
   "author": "Vikash Chauhan",
   "repository": "https://github.com/VikashChauhan51/catalog.git",
@@ -12,7 +12,7 @@
     "@semantic-release/github": "*",
     "@semantic-release/exec": "*",
     "@droidsolutions-oss/semantic-release-nuget": "*",
-    "@droidsolutions-oss/semantic-release-update-file":"*",
+    "@droidsolutions-oss/semantic-release-update-file": "*",
     "husky": "*",
     "node-env-run": "*",
     "semantic-release": "*",
@@ -21,8 +21,7 @@
     "lint-staged": "*",
     "travis-deploy-once": "*",
     "commitizen": "*",
-    "conventional-changelog-eslint": "*",
-    "semantic-release-docker": "*"
+    "conventional-changelog-eslint": "*"
   },
   "mian": "server/index.js",
   "husky": {
