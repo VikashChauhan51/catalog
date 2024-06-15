@@ -4,8 +4,8 @@
   "author": "Vikash Chauhan",
   "repository": "https://github.com/VikashChauhan51/catalog.git",
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "^9.0.1",
-  "@semantic-release/release-notes-generator": "^10.0.2",
+    "@semantic-release/commit-analyzer": "*",
+    "@semantic-release/release-notes-generator": "*",
     "@semantic-release/changelog": "*",
     "@semantic-release/git": "*",
     "@semantic-release/npm": "*",
@@ -15,14 +15,14 @@
     "@droidsolutions-oss/semantic-release-update-file":"*",
     "husky": "*",
     "node-env-run": "*",
-    "semantic-release": "^17.4.7",
+    "semantic-release": "*",
     "nodemon": "*",
     "concurrently": "*",
     "lint-staged": "*",
     "travis-deploy-once": "*",
     "commitizen": "*",
     "conventional-changelog-eslint": "*",
-     "semantic-release-docker": "^2.2.0"
+    "semantic-release-docker": "*"
   },
   "mian": "server/index.js",
   "husky": {
