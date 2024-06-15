@@ -21,7 +21,8 @@
     "lint-staged": "*",
     "travis-deploy-once": "*",
     "commitizen": "*",
-    "conventional-changelog-eslint": "*"
+    "conventional-changelog-eslint": "*",
+    "@semantic-release/docker":"*"
   },
   "mian": "server/index.js",
   "husky": {
