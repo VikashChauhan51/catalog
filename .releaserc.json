@@ -104,7 +104,7 @@
           "CHANGELOG.md",
           "src/Catalog.API/Catalog.API.csproj"
         ],
-        "message": "chore(release):${nextRelease.version} [skip ci]\n\n ${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
     [
@@ -119,6 +119,20 @@
       "@semantic-release/exec",
       {
         "successCmd": "echo \"RELEASE_VERSION=${nextRelease.version}\" >> $GITHUB_ENV"
+      }
+    ],
+    [
+      "semantic-release-docker",
+      {
+        "baseImageName": "ghcr.io/${{ github.repository_owner }}/catalog",
+        "registries": [
+          {
+            "url": "ghcr.io",
+            "imageName": "ghcr.io/${{ github.repository_owner }}/catalog",
+            "user": "${{ secrets.GITHUB_ACTOR }}",
+            "password": "${{ secrets.GITHUB_TOKEN }}"
+          }
+        ]
       }
     ]
   ]
