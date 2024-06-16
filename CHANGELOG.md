@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/VikashChauhan51/catalog/compare/v1.0.3...v1.0.4) (2024-06-16)
+
+
+### Fix
+
+* docker image ([f8601eb](https://github.com/VikashChauhan51/catalog/commit/f8601ebf50627a477a600f257e6473aff7244450))
+* docker image (#8) ([bac07d2](https://github.com/VikashChauhan51/catalog/commit/bac07d2548705d3a49119bf41252658dc2de2307)), closes [#8](https://github.com/VikashChauhan51/catalog/issues/8)
+
 ## [1.0.3](https://github.com/VikashChauhan51/catalog/compare/v1.0.2...v1.0.3) (2024-06-16)
 
 
