@@ -22,7 +22,7 @@
     "travis-deploy-once": "*",
     "commitizen": "*",
     "conventional-changelog-eslint": "*",
-    "semantic-release-docker":"*"
+    "semantic-release-docker": "*"
   },
   "mian": "server/index.js",
   "husky": {
