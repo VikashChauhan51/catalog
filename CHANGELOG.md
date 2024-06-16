@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/VikashChauhan51/catalog/compare/v1.0.0...v1.0.1) (2024-06-16)
+
+
+### Fix
+
+* remove extra file ([37be33e](https://github.com/VikashChauhan51/catalog/commit/37be33e82cb1151da8b6636c7c0d0c2cbdcbb8af))
+* remove extra file (#5) ([b2a31cd](https://github.com/VikashChauhan51/catalog/commit/b2a31cdf2abcb39c5bc9a1fe14bb5086c0adc3b4)), closes [#5](https://github.com/VikashChauhan51/catalog/issues/5)
+* use dry run mode ([a71955b](https://github.com/VikashChauhan51/catalog/commit/a71955be4e035335e3ce957c4d3538a61af23922))
+
 # 1.0.0 (2024-06-16)
 
 
