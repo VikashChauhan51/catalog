@@ -1,4 +1,4 @@
-name: build and publish docker image to GHCR
+name: Build and publish Docker image to GHCR
 
 on:
   push:
@@ -9,14 +9,12 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
   USER_NAME: ${{ secrets.USER_NAME }}
   DOCKER_USERNAME: ${{ github.actor }}
   DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   DOCKER_REGISTRY_USER: ${{ github.actor }}
   DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-  NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NODE_VERSION: 21
   DOTNET_VERSION: "8.0.x"
 
@@ -39,15 +37,17 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
         working-directory: src
+
       - name: Build
         run: dotnet build --configuration Release --no-restore
         working-directory: src
-      - name: Setup Nodejs
+
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install dependencies
+      - name: Install Node.js dependencies
         run: npm install -f
         working-directory: ./
 
@@ -67,20 +67,14 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_USERNAME: ${{ github.actor }}
-          DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_REGISTRY_USER: ${{ github.actor }}
-          DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           USER_NAME: ${{ secrets.USER_NAME }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release --dry-run
         working-directory: ./
 
       - name: Extract version from semantic-release output
         id: get_version
-        run: echo "VERSION=$(cat .releaserc.json | jq -r '.nextRelease.version')" >> $GITHUB_ENV
+        run: echo "VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
