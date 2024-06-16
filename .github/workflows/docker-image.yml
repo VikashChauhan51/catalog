@@ -80,7 +80,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./src/Catalog.API
+          context: ./src
           file: ./src/Catalog.API/Dockerfile
           push: true
           tags: ghcr.io/${{ env.LOWERCASE_OWNER }}/catalog:${{ env.VERSION }}
