@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/VikashChauhan51/catalog/compare/v1.0.1...v1.0.2) (2024-06-16)
+
+
+### Fix
+
+* fixing dock image issue ([acaf604](https://github.com/VikashChauhan51/catalog/commit/acaf604b8a12fed2ab511176ac40272b758ff668))
+* fixing dock image issue (#6) ([a21a987](https://github.com/VikashChauhan51/catalog/commit/a21a9871cd95b331146702da22763f3c2b0600d7)), closes [#6](https://github.com/VikashChauhan51/catalog/issues/6)
+
 ## [1.0.1](https://github.com/VikashChauhan51/catalog/compare/v1.0.0...v1.0.1) (2024-06-16)
 
 
