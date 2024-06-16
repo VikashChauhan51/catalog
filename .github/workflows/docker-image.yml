@@ -73,10 +73,14 @@ jobs:
         id: get_version
         run: echo "VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
 
+      - name: Convert repository owner to lowercase
+        id: lowercase_owner
+        run: echo "LOWERCASE_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: ./src/Catalog.API
           file: ./src/Catalog.API/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/catalog:${{ env.VERSION }}
+          tags: ghcr.io/${{ env.LOWERCASE_OWNER }}/catalog:${{ env.VERSION }}
