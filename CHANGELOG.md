@@ -1,3 +1,11 @@
+## [1.0.5](https://github.com/VikashChauhan51/catalog/compare/v1.0.4...v1.0.5) (2024-06-16)
+
+
+### Fix
+
+* fixed dotnet restore issue ([05b0a74](https://github.com/VikashChauhan51/catalog/commit/05b0a743caa9123068247f130952dd526445baa1))
+* fixed dotnet restore issue (#9) ([51912b2](https://github.com/VikashChauhan51/catalog/commit/51912b22c4185c245dfe82b7f450884a404a95c7)), closes [#9](https://github.com/VikashChauhan51/catalog/issues/9)
+
 ## [1.0.4](https://github.com/VikashChauhan51/catalog/compare/v1.0.3...v1.0.4) (2024-06-16)
 
 
