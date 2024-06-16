@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/VikashChauhan51/catalog/compare/v1.0.2...v1.0.3) (2024-06-16)
+
+
+### Fix
+
+* fixed docker file ([c53c3ab](https://github.com/VikashChauhan51/catalog/commit/c53c3abdcb39b2516c8cb19873dc356628e08768))
+* fixed docker file (#7) ([7b4859e](https://github.com/VikashChauhan51/catalog/commit/7b4859e7544546f00235222403ee1ad771772a25)), closes [#7](https://github.com/VikashChauhan51/catalog/issues/7)
+
 ## [1.0.2](https://github.com/VikashChauhan51/catalog/compare/v1.0.1...v1.0.2) (2024-06-16)
 
 
