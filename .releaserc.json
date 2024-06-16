@@ -93,8 +93,6 @@
         "changelogFile": "CHANGELOG.md"
       }
     ],
-    "@droidsolutions-oss/semantic-release-update-file",
-    "@semantic-release/npm",
     [
       "@semantic-release/git",
       {
@@ -103,15 +101,7 @@
           "CHANGELOG.md",
           "src/Catalog.API/Catalog.API.csproj"
         ],
-        "message": "chore(release):${nextRelease.version} [skip ci]\n\n ${nextRelease.notes}"
-      }
-    ],
-    [
-      "@semantic-release/github",
-      {
-        "path": "@semantic-release/github",
-        "label": "semantic_versioning_example_v${nextRelease.version}.zip",
-        "name": "semantic_versioning_example_v${nextRelease.version}.zip"
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
     [
@@ -120,24 +110,5 @@
         "successCmd": "echo \"RELEASE_VERSION=${nextRelease.version}\" >> $GITHUB_ENV"
       }
     ]
-  ],
-  "npmPublish": false,
-  "projectPath": "src/Catalog.API/Catalog.API.csproj",
-  "includeSymbols": true,
-  "files": [
-    {
-      "path": ["src/Catalog.API/Catalog.API.csproj"],
-      "type": "xml",
-      "replacements": [
-        {
-          "key": "VersionPrefix",
-          "value": "${nextRelease.version}"
-        },
-        {
-          "key": "RepositoryCommit",
-          "value": "${GITHUB_SHA}"
-        }
-      ]
-    }
   ]
 }

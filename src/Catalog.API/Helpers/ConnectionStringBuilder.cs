@@ -48,3 +48,4 @@ public class ConnectionStringBuilder
         return stringHandler.ToStringAndClear();
     }
 }
+
