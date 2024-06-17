@@ -70,13 +70,34 @@ jobs:
         run: npx semantic-release
         working-directory: ./
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Extract version from semantic-release output
         id: get_version
-        run: echo "VERSION=$(jq -r '.nextRelease.version' <<< \"${{ steps.semantic_release.outputs.nextRelease }}\")" >> $GITHUB_ENV
+        run: |
+          echo "Extracting version from semantic-release output..."
+          if [ -z "${{ steps.semantic_release.outputs.nextRelease }}" ]; then
+            echo "No release detected by semantic-release."
+            exit 1
+          fi
+          VERSION=$(jq -r '.nextRelease.version' <<< "${{ steps.semantic_release.outputs.nextRelease }}")
+          if [ -z "$VERSION" ]; then
+            echo "Failed to extract version."
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Extracted version: $VERSION"
+
+      - name: Check extracted version
+        run: echo "VERSION is ${{ env.VERSION }}"
 
       - name: Convert repository owner to lowercase
         id: lowercase_owner
-        run: echo "LOWERCASE_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+        run: |
+          LOWERCASE_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
+          echo "LOWERCASE_OWNER=$LOWERCASE_OWNER" >> $GITHUB_ENV
+          echo "Converted repository owner: $LOWERCASE_OWNER"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
