@@ -1,3 +1,11 @@
+## [1.0.7](https://github.com/VikashChauhan51/catalog/compare/v1.0.6...v1.0.7) (2024-06-17)
+
+
+### Fix
+
+* separate validators ([f293430](https://github.com/VikashChauhan51/catalog/commit/f2934303cd38a4c2bef508ae3678150e41b26339))
+* separate validators (#11) ([dc66267](https://github.com/VikashChauhan51/catalog/commit/dc662674720c9327fe818a4cb19a1c419fb0c7f9)), closes [#11](https://github.com/VikashChauhan51/catalog/issues/11)
+
 ## [1.0.6](https://github.com/VikashChauhan51/catalog/compare/v1.0.5...v1.0.6) (2024-06-17)
 
 
