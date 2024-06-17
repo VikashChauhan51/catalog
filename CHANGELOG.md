@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/VikashChauhan51/catalog/compare/v1.0.9...v1.0.10) (2024-06-17)
+
+
+### Fix
+
+* updated template ([85bae6f](https://github.com/VikashChauhan51/catalog/commit/85bae6fad98f1a939f1d17a359815f1358c1ad5c))
+
 ## [1.0.9](https://github.com/VikashChauhan51/catalog/compare/v1.0.8...v1.0.9) (2024-06-17)
 
 
