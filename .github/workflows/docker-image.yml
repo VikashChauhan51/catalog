@@ -13,8 +13,6 @@ env:
   USER_NAME: ${{ secrets.USER_NAME }}
   DOCKER_USERNAME: ${{ github.actor }}
   DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-  DOCKER_REGISTRY_USER: ${{ github.actor }}
-  DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   NODE_VERSION: 21
   DOTNET_VERSION: "8.0.x"
 
@@ -71,7 +69,7 @@ jobs:
 
       - name: Extract version from semantic-release output
         id: get_version
-        run: echo "VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
+        run: echo "VERSION=$(npx -q semantic-release -a | jq -r '.nextRelease.version')" >> $GITHUB_ENV
 
       - name: Convert repository owner to lowercase
         id: lowercase_owner
