@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/VikashChauhan51/catalog/compare/v1.0.8...v1.0.9) (2024-06-17)
+
+
+### Fix
+
+* check version updated ([42bcc6c](https://github.com/VikashChauhan51/catalog/commit/42bcc6c2a27a35e4a413d71f2245805103a31806))
+
 ## [1.0.8](https://github.com/VikashChauhan51/catalog/compare/v1.0.7...v1.0.8) (2024-06-17)
 
 
