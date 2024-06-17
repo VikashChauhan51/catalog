@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/VikashChauhan51/catalog/compare/v1.0.5...v1.0.6) (2024-06-17)
+
+
+### Fix
+
+* enable update functionality ([4c4e5a2](https://github.com/VikashChauhan51/catalog/commit/4c4e5a257936a3e88ee04248e948f68bfe0a9df7))
+* enable update functionality (#10) ([50a5a01](https://github.com/VikashChauhan51/catalog/commit/50a5a0154df3c478a539b49e64ad3bd823a04587)), closes [#10](https://github.com/VikashChauhan51/catalog/issues/10)
+
 ## [1.0.5](https://github.com/VikashChauhan51/catalog/compare/v1.0.4...v1.0.5) (2024-06-16)
 
 
