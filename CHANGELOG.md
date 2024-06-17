@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/VikashChauhan51/catalog/compare/v1.0.7...v1.0.8) (2024-06-17)
+
+
+### Fix
+
+* fixed template versionong ([00e5db8](https://github.com/VikashChauhan51/catalog/commit/00e5db8f4fe5aee488d7901918f92c34cad1c392))
+
 ## [1.0.7](https://github.com/VikashChauhan51/catalog/compare/v1.0.6...v1.0.7) (2024-06-17)
 
 
