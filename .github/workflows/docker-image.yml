@@ -4,17 +4,11 @@ on:
   push:
     branches:
       - "main"
-    tags:
-      - "v*.*.*"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
   USER_NAME: ${{ secrets.USER_NAME }}
-  DOCKER_USERNAME: ${{ github.actor }}
-  DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-  DOCKER_REGISTRY_USER: ${{ github.actor }}
-  DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   NODE_VERSION: 21
   DOTNET_VERSION: "8.0.x"
 
