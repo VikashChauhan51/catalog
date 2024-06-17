@@ -21,10 +21,6 @@ internal class CreateProductCommandHandler(IDocumentSession session)
 {
     public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        //create Product entity from command object
-        //save to database
-        //return CreateProductResult result               
-
         var product = new Product
         {
             Name = command.Name,
