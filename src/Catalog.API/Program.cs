@@ -6,12 +6,16 @@ using Ecart.Core;
 using Ecart.Core.Behaviors;
 using Ecart.Core.Configurations;
 using Ecart.Core.Handlers;
+using Ecart.Core.Loggers;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Host.UseSerilog(SeriLogger.Configure);
 builder.Services.AddDaprConfiguration(builder.Configuration);
 builder.Services.AddSqlConfiguration(builder.Configuration);
 
