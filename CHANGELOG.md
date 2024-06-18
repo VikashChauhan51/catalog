@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/VikashChauhan51/catalog/compare/v1.0.11...v1.1.0) (2024-06-18)
+
+
+### New
+
+* Use Serilog ([2ef437d](https://github.com/VikashChauhan51/catalog/commit/2ef437d2d5f5f100bf6c5c30a5f2dfd388756e77))
+* Use Serilog (#12) ([675da3e](https://github.com/VikashChauhan51/catalog/commit/675da3e83db7d1bab2132c70609c2b028f745ed6)), closes [#12](https://github.com/VikashChauhan51/catalog/issues/12)
+
 ## [1.0.11](https://github.com/VikashChauhan51/catalog/compare/v1.0.10...v1.0.11) (2024-06-17)
 
 
