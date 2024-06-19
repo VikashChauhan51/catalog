@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/VikashChauhan51/catalog/compare/v1.1.0...v1.2.0) (2024-06-19)
+
+
+### New
+
+* clean structre ([fd58f89](https://github.com/VikashChauhan51/catalog/commit/fd58f892ec1e2987f1b41b4d6772bb3a4a2cd871))
+
 # [1.1.0](https://github.com/VikashChauhan51/catalog/compare/v1.0.11...v1.1.0) (2024-06-18)
 
 
