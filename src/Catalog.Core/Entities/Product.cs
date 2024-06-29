@@ -8,5 +8,4 @@ public class Product : Entity<Guid>
     public string Description { get; set; } = string.Empty;
     public string ImageFile { get; set; } = string.Empty;
     public decimal Price { get; set; }
-    public int Quantity { get; set; }
 }
