@@ -8,9 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Catalog.Core\Catalog.Core.csproj" />
+    <ProjectReference Include="..\Catalog.Infrastructure\Catalog.Infrastructure.csproj" />
   </ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Marten" Version="7.20.0" />
-	</ItemGroup>
 
 </Project>
