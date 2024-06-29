@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/VikashChauhan51/catalog/compare/v1.2.0...v1.2.1) (2024-06-29)
+
+
+### Hotfix
+
+* Removed quantity property ([00e9a35](https://github.com/VikashChauhan51/catalog/commit/00e9a35a38420017a788fbd24d5742e9a10e1e46))
+
 # [1.2.0](https://github.com/VikashChauhan51/catalog/compare/v1.1.0...v1.2.0) (2024-06-19)
 
 
