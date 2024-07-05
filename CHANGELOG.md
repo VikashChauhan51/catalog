@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/VikashChauhan51/catalog/compare/v1.2.1...v1.2.2) (2024-07-05)
+
+
+### Fix
+
+* removed  default logging ([06ed40c](https://github.com/VikashChauhan51/catalog/commit/06ed40c2a99288ebfec7fa1402acfd6ef1171db0))
+
 ## [1.2.1](https://github.com/VikashChauhan51/catalog/compare/v1.2.0...v1.2.1) (2024-06-29)
 
 
