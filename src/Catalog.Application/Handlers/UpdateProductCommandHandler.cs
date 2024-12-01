@@ -1,28 +1,22 @@
 ﻿
 namespace Catalog.Application.Handlers;
-public class UpdateProductCommandHandler(ILogger<UpdateProductCommandHandler> logger, IDocumentSession session)
+public class UpdateProductCommandHandler(ILogger<UpdateProductCommandHandler> logger, IProductRepository productRepository)
     : ICommandHandler<UpdateProductCommand, UpdateProductResult>
 {
     public async Task<UpdateProductResult> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
     {
-        var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
+        var product = new Product {
+            Id = command.Id,
+            Name = command.Name,
+            Category = command.Category,
+            Description = command.Description,
+            ImageFile = command.ImageFile,
+            Price = command.Price,
+            LastModified = DateTime.UtcNow,
+            LastModifiedBy = "System"
+        };
 
-        if (product is null)
-        {
-            logger.LogError("Product not found for id: {Id}", command.Id.ToString());
-            throw new NotFoundException(command.Id.ToString());
-        }
-
-        product.Name = command.Name;
-        product.Category = command.Category;
-        product.Description = command.Description;
-        product.ImageFile = command.ImageFile;
-        product.Price = command.Price;
-        product.LastModified = DateTime.UtcNow;
-        product.LastModifiedBy = "System";
-
-        session.Update(product);
-        await session.SaveChangesAsync(cancellationToken);
+        await productRepository.UpdateAsync(product, cancellationToken);
 
         return new UpdateProductResult(true);
     }

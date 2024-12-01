@@ -6,8 +6,5 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Ecart.Core" Version="1.6.0" />
-  </ItemGroup>
 
 </Project>

@@ -1,7 +1,5 @@
-﻿using Ecart.Core.Domain;
-
-namespace Catalog.Core.Entities;
-public class Product : Entity<Guid>
+﻿namespace Catalog.Core.Entities;
+public class Product : Entity<string>
 {
     public string Name { get; set; } = string.Empty;
     public List<string> Category { get; set; } = new();

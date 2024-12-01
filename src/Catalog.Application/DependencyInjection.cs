@@ -1,10 +1,6 @@
-﻿
-using Catalog.Application.Handlers;
-using Ecart.Core.Behaviors;
-using FluentValidation;
+﻿using Catalog.Application.Handlers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace Catalog.Application;
 public static class DependencyInjection
@@ -22,7 +18,7 @@ public static class DependencyInjection
         });
 
         //register validators
-        services.AddValidatorsFromAssembly(assembly);
+       // services.AddValidatorsFromAssembly(assembly);
         return services;
     }
 }
