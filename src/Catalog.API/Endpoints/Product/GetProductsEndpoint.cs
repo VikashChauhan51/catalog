@@ -1,4 +1,4 @@
-﻿using Catalog.Application.Queries;
+﻿using Catalog.Application.Product.Queries;
 
 namespace Catalog.API.Endpoints.Product;
 

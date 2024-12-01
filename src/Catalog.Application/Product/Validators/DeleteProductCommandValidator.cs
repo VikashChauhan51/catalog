@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using Catalog.Application.Product.Commands;
+using FluentValidation;
 
-namespace Catalog.Application.Validators;
+namespace Catalog.Application.Product.Validators;
 public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
 {
     public DeleteProductCommandValidator()

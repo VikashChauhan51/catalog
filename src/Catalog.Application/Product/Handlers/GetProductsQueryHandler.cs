@@ -1,4 +1,7 @@
-﻿namespace Catalog.Application.Handlers;
+﻿using Catalog.Application.Product.Queries;
+using Catalog.Application.Product.Responses;
+
+namespace Catalog.Application.Product.Handlers;
 public class GetProductsQueryHandler(IProductRepository productRepository)
     : IQueryHandler<GetProductsQuery, GetProductsResult>
 {

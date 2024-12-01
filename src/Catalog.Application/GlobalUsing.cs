@@ -1,7 +1,6 @@
-﻿global using Catalog.Application.Commands;
-global using Catalog.Application.Responses;
-global using Catalog.Application.Queries;
-global using Catalog.Core.Entities;
+﻿global using Akka.Actor;
+global using MediatR;
+global using Akka.DependencyInjection;
 global using Catalog.Core.Repositories;
 global using Microsoft.Extensions.Logging;
 global using MediatorForge.CQRS.Commands;

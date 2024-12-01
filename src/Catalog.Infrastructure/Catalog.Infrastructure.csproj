@@ -11,6 +11,6 @@
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Marten" Version="7.33.2" />
-		<PackageReference Include="Ecart.Core" Version="1.7.1" />
+		<PackageReference Include="Ecart.Core" Version="1.7.2" />
 	</ItemGroup>
 </Project>

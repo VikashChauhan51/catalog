@@ -1,4 +1,4 @@
-﻿using Catalog.Application.Commands;
+﻿using Catalog.Application.Product.Commands;
 
 namespace Catalog.API.Endpoints.Product;
 

@@ -1,4 +1,7 @@
-﻿using Catalog.Application.Handlers;
+﻿using Akka.Actor;
+using Akka.DependencyInjection;
+using Catalog.Application.Product.Handlers;
+using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,8 +20,19 @@ public static class DependencyInjection
             config.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
 
+        // Register Akka.NET actor system
+        services.AddSingleton(provider =>
+        {
+            var bootstrap = BootstrapSetup.Create();
+            // enable DI support inside this ActorSystem, if needed
+            var diSetup = DependencyResolverSetup.Create(provider);
+            // merge this setup (and any others) together into ActorSystemSetup
+            var actorSystemSetup = bootstrap.And(diSetup);
+            var actorSystem = ActorSystem.Create("ProductSystem", actorSystemSetup);
+            return actorSystem;
+        });
         //register validators
-       // services.AddValidatorsFromAssembly(assembly);
+         services.AddValidatorsFromAssembly(assembly);
         return services;
     }
 }

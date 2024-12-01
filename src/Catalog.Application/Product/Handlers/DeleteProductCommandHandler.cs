@@ -1,4 +1,7 @@
-﻿namespace Catalog.Application.Handlers;
+﻿using Catalog.Application.Product.Commands;
+using Catalog.Application.Product.Responses;
+
+namespace Catalog.Application.Product.Handlers;
 public class DeleteProductCommandHandler(IProductRepository productRepository)
     : ICommandHandler<DeleteProductCommand, DeleteProductResult>
 {
