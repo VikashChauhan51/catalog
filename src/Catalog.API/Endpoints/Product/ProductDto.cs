@@ -1,8 +1,8 @@
-﻿namespace Catalog.API.Models;
+﻿namespace Catalog.API.Endpoints.Product;
 
-public class Product
+public class ProductDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public List<string> Category { get; set; } = new();
     public string Description { get; set; } = string.Empty;
