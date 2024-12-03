@@ -1,14 +1,22 @@
-﻿using Catalog.Application.Product.Queries;
+﻿using Catalog.Application.Product.Actors;
+using Catalog.Application.Product.Queries;
 using Catalog.Application.Product.Responses;
 
 namespace Catalog.Application.Product.Handlers;
-public class GetProductsQueryHandler(IProductRepository productRepository)
-    : IQueryHandler<GetProductsQuery, GetProductsResult>
+public class GetProductsQueryHandler
+    : IQueryHandler<GetProductsQuery, Result<GetProductsResult>>
 {
-    public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)
+    private readonly IActorRef getProductsActor;
+    private readonly ILogger<GetProductsQueryHandler> logger;
+    public GetProductsQueryHandler(ActorSystem actorSystem, ILogger<GetProductsQueryHandler> logger)
     {
-        var products = await productRepository.GetPagedListAsync(query.PageNumber ?? 1, query.PageSize ?? 10, cancellationToken);
-
-        return new GetProductsResult(products);
+        var props = DependencyResolver.For(actorSystem).Props<GetProductByIdActor>();
+        getProductsActor = actorSystem.ActorOf(props, "getProductsActor");
+        this.logger = logger;
+    }
+    public async Task<Result<GetProductsResult>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
+    {
+        this.logger.LogInformation("Getting products for page: {Page}", query.PageNumber + 1);
+        return await getProductsActor.Ask<Result<GetProductsResult>>(query, cancellationToken).ConfigureAwait(false);
     }
 }

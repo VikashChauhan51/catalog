@@ -10,7 +10,7 @@ public record UpdateProductRequest(Guid Id,
     decimal Price);
 public record UpdateProductResponse(bool IsSuccess);
 
-public class UpdateProductEndpoint : ICarterModule
+public class UpdateProductEndpoint : EndpointsBase, ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -26,12 +26,13 @@ public class UpdateProductEndpoint : ICarterModule
     private static async Task<IResult> UpdateProduct(UpdateProductRequest request, ISender sender)
     {
         var command = request.Adapt<UpdateProductCommand>();
+        var response = await sender.Send(command);
 
-        var result = await sender.Send(command);
-
-        var response = result.Adapt<UpdateProductResponse>();
-
-        return Results.Ok(response);
+        return response.Match<IResult>
+        (
+              result => Results.NoContent(),
+              error => ProcessError(error)
+        );
     }
 }
 

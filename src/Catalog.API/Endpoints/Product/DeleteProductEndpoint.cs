@@ -4,7 +4,7 @@ namespace Catalog.API.Endpoints.Product;
 
 public record DeleteProductResponse(bool IsSuccess);
 
-public class DeleteProductEndpoint : ICarterModule
+public class DeleteProductEndpoint : EndpointsBase, ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -19,10 +19,12 @@ public class DeleteProductEndpoint : ICarterModule
 
     private static async Task<IResult> DeleteProduct(string id, ISender sender)
     {
-        var result = await sender.Send(new DeleteProductCommand(id));
+        var response = await sender.Send(new DeleteProductCommand(id));
 
-        var response = result.Adapt<DeleteProductResponse>();
-
-        return Results.Ok(response);
+        return response.Match<IResult>
+        (
+            result => Results.NoContent(),
+            error => ProcessError(error)
+        );
     }
 }

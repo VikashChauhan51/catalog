@@ -1,25 +1,26 @@
-﻿using Catalog.Application.Product.Actor;
+﻿using Catalog.Application.Product.Actors;
 using Catalog.Application.Product.Commands;
-using Catalog.Application.Product.Responses;
-
 
 namespace Catalog.Application.Product.Handlers;
 
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductResult>
+public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result<Unit>>
 {
     private readonly IActorRef createProductActor;
 
-    public CreateProductCommandHandler(ActorSystem actorSystem)
+    private readonly ILogger<UpdateProductCommandHandler> logger;
+    public CreateProductCommandHandler(ActorSystem actorSystem, ILogger<UpdateProductCommandHandler> logger)
     {
         var props = DependencyResolver.For(actorSystem).Props<CreateProductActor>();
         createProductActor = actorSystem.ActorOf(props, "createProductActor");
+        this.logger = logger;
     }
 
-    public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+    public Task<Result<Unit>> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        var result = await this.createProductActor.Ask<CreateProductResult>(command, cancellationToken);
-        return result;
+        this.logger.LogInformation("Creating product.");
+        this.createProductActor.Tell(command);
+        return Task.FromResult(Result<Unit>.Succ(Unit.Value));
     }
 }
 

@@ -11,7 +11,7 @@ public record CreateProductRequest(string Name,
 
 public record CreateProductResponse(string Id);
 
-public class CreateProductEndpoint : ICarterModule
+public class CreateProductEndpoint : EndpointsBase, ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -28,11 +28,12 @@ public class CreateProductEndpoint : ICarterModule
     private static async Task<IResult> CreateProduct(CreateProductRequest request, ISender sender)
     {
         var command = request.Adapt<CreateProductCommand>();
+        var response = await sender.Send(command);
 
-        var result = await sender.Send(command);
-
-        var response = result.Adapt<CreateProductResponse>();
-
-        return Results.Created($"/{response.Id}/product", response);
+        return response.Match<IResult>
+        (
+            result => Results.Created(),
+            error => ProcessError(error)
+        );
     }
 }

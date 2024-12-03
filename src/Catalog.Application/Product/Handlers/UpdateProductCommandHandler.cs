@@ -1,26 +1,19 @@
-﻿using Catalog.Application.Product.Commands;
-using Catalog.Application.Product.Responses;
+﻿using Catalog.Application.Product.Actors;
+using Catalog.Application.Product.Commands;
 
 namespace Catalog.Application.Product.Handlers;
-public class UpdateProductCommandHandler(ILogger<UpdateProductCommandHandler> logger, IProductRepository productRepository)
-    : ICommandHandler<UpdateProductCommand, UpdateProductResult>
+public class UpdateProductCommandHandler
+    : ICommandHandler<UpdateProductCommand, Result<Unit>>
 {
-    public async Task<UpdateProductResult> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
+    private readonly IActorRef updateProductActor;
+    public UpdateProductCommandHandler(ActorSystem actorSystem, ILogger<UpdateProductCommandHandler> logger)
     {
-        var product = new Core.Entities.Product
-        {
-            Id = command.Id,
-            Name = command.Name,
-            Category = command.Category,
-            Description = command.Description,
-            ImageFile = command.ImageFile,
-            Price = command.Price,
-            LastModified = DateTime.UtcNow,
-            LastModifiedBy = "System"
-        };
-
-        await productRepository.UpdateAsync(product, cancellationToken);
-
-        return new UpdateProductResult(true);
+        var props = DependencyResolver.For(actorSystem).Props<UpdateProductActor>();
+        updateProductActor = actorSystem.ActorOf(props, "updateProductActor");
+    }
+    public Task<Result<Unit>> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
+    {
+        updateProductActor.Tell(command);
+        return Task.FromResult(Result<Unit>.Succ(Unit.Value));
     }
 }

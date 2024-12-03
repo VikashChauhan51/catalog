@@ -1,7 +1,6 @@
 ﻿using Catalog.Application.Product.Commands;
-using Catalog.Application.Product.Responses;
 
-namespace Catalog.Application.Product.Actor;
+namespace Catalog.Application.Product.Actors;
 
 public class CreateProductActor : ReceiveActor
 {
@@ -27,9 +26,6 @@ public class CreateProductActor : ReceiveActor
 
             // Save to database
             await this.repository.AddAsync(product, CancellationToken.None);
-
-            // Return result
-            Sender.Tell(new CreateProductResult(product.Id));
         });
     }
 }

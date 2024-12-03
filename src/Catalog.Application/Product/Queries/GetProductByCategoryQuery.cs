@@ -2,4 +2,4 @@
 
 namespace Catalog.Application.Product.Queries;
 
-public record GetProductByCategoryQuery(string Category) : IQuery<GetProductByCategoryResult>;
+public record GetProductByCategoryQuery(string Category) : IQuery<Result<GetProductByCategoryResult>>;

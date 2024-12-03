@@ -4,7 +4,7 @@ namespace Catalog.API.Endpoints.Product;
 
 public record GetProductByCategoryResponse(IEnumerable<ProductDto> Products);
 
-public class GetProductByCategoryEndpoint : ICarterModule
+public class GetProductByCategoryEndpoint : EndpointsBase, ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -19,11 +19,13 @@ public class GetProductByCategoryEndpoint : ICarterModule
 
     private static async Task<IResult> GetByCategory(string category, ISender sender)
     {
-        var result = await sender.Send(new GetProductByCategoryQuery(category));
+        var response = await sender.Send(new GetProductByCategoryQuery(category));
 
-        var response = result.Adapt<GetProductByCategoryResponse>();
-
-        return Results.Ok(response);
+        return response.Match<IResult>
+        (
+               result => Results.Ok(result),
+               error => ProcessError(error)
+        );
     }
-   
+
 }
