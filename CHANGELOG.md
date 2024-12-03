@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/VikashChauhan51/catalog/compare/v1.2.2...v1.2.3) (2024-12-03)
+
+
+### Fix
+
+* handlers (#17) ([f44a514](https://github.com/VikashChauhan51/catalog/commit/f44a514b6ea4736a449481f076762f5c87998b51)), closes [#17](https://github.com/VikashChauhan51/catalog/issues/17)
+
 ## [1.2.2](https://github.com/VikashChauhan51/catalog/compare/v1.2.1...v1.2.2) (2024-07-05)
 
 
