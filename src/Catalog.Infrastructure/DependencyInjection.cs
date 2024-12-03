@@ -1,4 +1,6 @@
-﻿using Catalog.Infrastructure.Helpers;
+﻿using Catalog.Core.Repositories;
+using Catalog.Infrastructure.Helpers;
+using Catalog.Infrastructure.Repositories;
 using Dapr.Client;
 using Ecart.Core;
 using Ecart.Core.Configurations;
@@ -40,6 +42,19 @@ public static class DependencyInjection
             .AddHealthChecks()
             .AddNpgSql(connectionString);
 
+        services.AddRepositories();
+
+        return services;
+    }
+
+    public static IServiceCollection AddRepositories
+      (this IServiceCollection services)
+    {
+        // Register Repositories
+        services.AddScoped(typeof(IReadRepository<,>), typeof(Repository<,>));
+        services.AddScoped(typeof(IWriteRepository<,>), typeof(Repository<,>));
+        services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+        services.AddScoped<IProductRepository, ProductRepository>();
         return services;
     }
 }
