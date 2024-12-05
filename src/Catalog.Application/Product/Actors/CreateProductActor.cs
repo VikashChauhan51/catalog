@@ -12,7 +12,7 @@ public class CreateProductActor : ReceiveActor
 
         ReceiveAsync<CreateProductCommand>(async command =>
         {
-            var product = new Core.Entities.Product
+            var product = new Catalog.Core.Entities.Product
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = command.Name,

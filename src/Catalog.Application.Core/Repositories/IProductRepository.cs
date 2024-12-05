@@ -1,6 +1,6 @@
 ﻿using Catalog.Core.Entities;
 
-namespace Catalog.Core.Repositories;
+namespace Catalog.Application.Core.Repositories;
 
 public interface IProductRepository : IRepository<Product, string>
 {

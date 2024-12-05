@@ -11,7 +11,7 @@ internal class UpdateProductActor: ReceiveActor
 
         ReceiveAsync<UpdateProductCommand>(async command =>
         {
-            var product = new Core.Entities.Product
+            var product = new Catalog.Core.Entities.Product
             {
                 Id = command.Id,
                 Name = command.Name,

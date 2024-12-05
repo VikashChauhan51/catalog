@@ -1,5 +1,5 @@
-﻿using Catalog.Core.Entities;
-using Catalog.Core.Repositories;
+﻿using Catalog.Application.Core.Repositories;
+using Catalog.Core.Entities;
 using Marten;
 
 namespace Catalog.Infrastructure.Repositories;

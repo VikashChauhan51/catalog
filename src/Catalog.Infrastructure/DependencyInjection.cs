@@ -1,4 +1,4 @@
-﻿using Catalog.Core.Repositories;
+﻿using Catalog.Application.Core.Repositories;
 using Catalog.Infrastructure.Helpers;
 using Catalog.Infrastructure.Repositories;
 using Dapr.Client;
