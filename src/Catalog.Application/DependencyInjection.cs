@@ -1,6 +1,4 @@
-﻿using Akka.Actor;
-using Akka.DependencyInjection;
-using Catalog.Application.Product.Handlers;
+﻿using Catalog.Application.Product.Handlers;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

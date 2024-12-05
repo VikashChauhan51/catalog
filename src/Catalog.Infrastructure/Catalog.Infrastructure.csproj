@@ -5,12 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Catalog.Core\Catalog.Core.csproj" />
-  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Marten" Version="7.33.2" />
 		<PackageReference Include="Ecart.Core" Version="1.7.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Catalog.Application\Catalog.Application.csproj" />
 	</ItemGroup>
 </Project>

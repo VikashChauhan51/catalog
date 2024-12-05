@@ -1,2 +1,2 @@
 ﻿namespace Catalog.Application.Product.Responses;
-public record GetProductByCategoryResult(IEnumerable<Core.Entities.Product> Products);
+public record GetProductByCategoryResult(IEnumerable<Catalog.Core.Entities.Product> Products);

@@ -1,7 +1,7 @@
 ﻿using Catalog.Core.Entities;
 using Catalog.Core.Pagination;
 
-namespace Catalog.Core.Repositories;
+namespace Catalog.Application.Core.Repositories;
 
 public interface IReadRepository<T, in TKey> where T : IEntity where TKey : notnull
 {
