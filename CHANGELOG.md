@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/VikashChauhan51/catalog/compare/v1.2.3...v1.2.4) (2024-12-05)
+
+
+### Fix
+
+* updated structure ([6ac7a70](https://github.com/VikashChauhan51/catalog/commit/6ac7a70c4cb3b83c477eb7e8ad13631b3d16c684))
+
 ## [1.2.3](https://github.com/VikashChauhan51/catalog/compare/v1.2.2...v1.2.3) (2024-12-03)
 
 
