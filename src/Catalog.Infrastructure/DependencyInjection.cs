@@ -1,5 +1,6 @@
 ﻿using Catalog.Application.Core.Repositories;
-using Catalog.Infrastructure.Helpers;
+using Catalog.Infrastructure.Features.Products;
+using Catalog.Infrastructure.Core;
 using Catalog.Infrastructure.Repositories;
 using Dapr.Client;
 using Ecart.Core;
@@ -8,6 +9,7 @@ using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Catalog.Application.Features.Products.Shared.Repositories;
 
 namespace Catalog.Infrastructure;
 public static class DependencyInjection

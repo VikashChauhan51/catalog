@@ -1,6 +1,5 @@
 ﻿using Catalog.Application.Core.Repositories;
-using Catalog.Core.Entities;
-using Catalog.Core.Pagination;
+using Catalog.Domain.Core;
 using Marten;
 using Marten.Pagination;
 using System.Linq.Expressions;
