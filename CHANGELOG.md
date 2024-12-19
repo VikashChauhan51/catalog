@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/VikashChauhan51/catalog/compare/v1.2.4...v1.2.5) (2024-12-19)
+
+
+### Fix
+
+* Upgraded dotnet version ([6fda468](https://github.com/VikashChauhan51/catalog/commit/6fda4686024ab3cf19716511edd9fa003c85523b))
+
 ## [1.2.4](https://github.com/VikashChauhan51/catalog/compare/v1.2.3...v1.2.4) (2024-12-05)
 
 
