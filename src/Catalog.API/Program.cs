@@ -1,5 +1,5 @@
 using Asp.Versioning;
-using Catalog.API;
+using Catalog.API.Middlewares;
 using Catalog.Application;
 using Catalog.Infrastructure;
 using Ecart.Core;

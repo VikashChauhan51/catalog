@@ -1,4 +1,4 @@
-﻿using Catalog.Application.Product.Handlers;
+﻿using Catalog.Application.Features.Products.GetProducts;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
